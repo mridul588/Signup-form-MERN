@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const { comparePassword, hashPassword } = require("../helper/auth");
 const jwt = require('jsonwebtoken');
+const JWT_SECRET = "Apple";
 
 const test = function (req, res) {
     res.json("test is working");
@@ -82,7 +83,7 @@ const loginUser = async (req, res) => {
 const getProfile = (req,res) => {
  const {token} = req.cookies
  if(token) {
-    jwt.verify(token,process.env.JWT_secret,{},(err ,user) => {
+    jwt.verify(token,process.env.JWT_SECRET,{},(err ,user) => {
         if(err) throw err;
         res.json(user)
     })
