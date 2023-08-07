@@ -10,14 +10,7 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
 
 const app = express();
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.header('Access-Control-Expose-Headers', 'Authorization'); // Optional
-    next();
-  });
+
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({extended: false}))
